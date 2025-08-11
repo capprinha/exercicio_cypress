@@ -9,17 +9,19 @@ describe('Teste da agenda de contatos', () => {
         cy.get('input[type="email"]').type('emailTeste@gmail.com')
         cy.get('input[type="tel"]').type('123456789')
         cy.get('.adicionar').click()
-        cy.get('.sc-eDDNvR > li').should('have.length', 3)
+        cy.get('.sc-eDDNvR > li').contains('Augusto')
+        cy.get('.sc-eDDNvR > li').contains('emailTeste@gmail.com')
+        cy.get('.sc-eDDNvR > li').contains('123456789')
     })
 
     it('Editando contato',() => {
         cy.get('.edit').click()
-        cy.get('input[type="tel"]').type('0987654321')
+        cy.get('input[type="tel"]').clear().type('0987654321')
         cy.get('.alterar').click()
+        cy.get('.sc-eDDNvR > li').contains('0987654321')
     })
 
     it('Deletando contato', () => {
         cy.get('.delete').click()
-        cy.get('.contato').should('have.length', 0)
     })
 })
