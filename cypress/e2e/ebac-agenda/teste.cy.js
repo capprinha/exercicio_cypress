@@ -15,13 +15,11 @@ describe('Teste da agenda de contatos', () => {
     })
 
     it('Editando contato',() => {
-        cy.get('.edit').click()
-        cy.get('input[type="tel"]').clear().type('0987654321')
-        cy.get('.alterar').click()
-        cy.get('.sc-eDDNvR > li').contains('0987654321')
+        cy.get('.sc-eDDNvR').contains('Augusto').get('.edit').last().click() 
+        cy.get('input[type="tel"]').clear().type('0987654321').get('.alterar').click()
     })
 
     it('Deletando contato', () => {
-        cy.get('.delete').click()
+        cy.get('.delete').last().click()
     })
 })
